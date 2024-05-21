@@ -21,12 +21,12 @@ int findMinimumReplacements(const std::string& braces) {
 }
 
 int main() {
-    std::string braces;
-    std::cout << "Enter a string of braces: ";
-    std::cin >> braces;
+    string braces;
+    cout << "Enter a string of braces: ";
+    cin >> braces;
 
     int replacements = findMinimumReplacements(braces);
-    std::cout << "Minimum number of replacements required: " << replacements << std::endl;
+    cout << "Minimum number of replacements required: " << replacements << endl;
 
     return 0;
 }
