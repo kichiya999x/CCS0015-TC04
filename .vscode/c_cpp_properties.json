@@ -9,6 +9,18 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
+            ],
+            "compilerPath": "C:\\Users\\renat\\OneDrive\\Documents\\KIESHA\\CCS0015\\CCS0015-TC04"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
             ]
         }
     ],
