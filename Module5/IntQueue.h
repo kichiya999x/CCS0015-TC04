@@ -1,16 +1,20 @@
+#include <iostream>
+using namespace std;
+
 class IntQueue
 {
 private:
     int *queueArray;
     int queueSize;
-    int front;  
+    int front;
     int rear;
     int numItems;
+
 public:
     IntQueue(int);
     ~IntQueue();
     void enqueue(int);
-    int dequeue(int &);
+    int dequeue();
     bool isEmpty();
     bool isFull();
     void clear();
@@ -21,7 +25,7 @@ public:
 //*************************
 IntQueue::IntQueue(int size)
 {
-    queueArray = new int[size]; // Create a dynamically allocated array with size 
+    queueArray = new int[size]; // Create a dynamically allocated array with size s
     queueSize = size; // Set the size of the queue
     front = -1; // Set flags
     rear = -1;
@@ -32,7 +36,7 @@ IntQueue::IntQueue(int size)
 //*************************
 IntQueue::~IntQueue()
 {
-    delete [] queueArray;
+    delete[] queueArray;
 }
 //********************************************
 // Function enqueue inserts the value in num *
@@ -44,7 +48,8 @@ void IntQueue::enqueue(int num)
         cout << "The queue is full.\n";
     else
     {
-        if(numItems==0){
+        if(numItems == 0)
+        {
             front = 0;
         }
         // Calculate the new rear position
@@ -59,15 +64,13 @@ void IntQueue::enqueue(int num)
 // Function dequeue removes the value at the *
 // front of the queue, and copies t into num. *
 //*********************************************
-int IntQueue::dequeue(int &num)
+int IntQueue::dequeue()
 {
     int num;
     if (isEmpty())
         cout << "The queue is empty.\n";
     else
-    {  
-    
-    
+    {
         // Retrieve the front item
         num = queueArray[front];
         // Move front
@@ -83,7 +86,7 @@ int IntQueue::dequeue(int &num)
 //*********************************************
 bool IntQueue::isEmpty()
 {
-    if (numItems < 0)
+    if (numItems > 0)
         return false;
     else
         return true;
@@ -94,11 +97,11 @@ bool IntQueue::isEmpty()
 //********************************************
 bool IntQueue::isFull()
 {
-    bool status;
     if (numItems < queueSize)
         return false;
     else
         return true;
+}
 //*******************************************
 // Function clear resets the front and rear *
 // indices, and sets numItems to 0. *
@@ -109,4 +112,3 @@ void IntQueue::clear()
     rear = queueSize - 1;
     numItems = 0;
 }
-

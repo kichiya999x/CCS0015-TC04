@@ -1,7 +1,9 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-int findMinimumReplacements(const std::string& braces) {
+int findMinimumReplacements(const string& braces) {
     int openCount = 0, closeCount = 0;
 
     for (char ch : braces) {
@@ -16,13 +18,12 @@ int findMinimumReplacements(const std::string& braces) {
         }
     }
 
-    // The total replacements needed will be the sum of unmatched opening and closing braces.
     return (openCount + closeCount + 1) / 2;
 }
 
 int main() {
     string braces;
-    cout << "Enter a string of braces: ";
+    cout << "\nEnter a string of braces: ";
     cin >> braces;
 
     int replacements = findMinimumReplacements(braces);
