@@ -1,34 +1,55 @@
 #include <iostream>
 using namespace std;
-template <typename T>
 
+template <typename T>
 class Stack {
 private:
     T* a;
     int n;
     int top;
-
 public:
     Stack(int size) {
-    n = size;
-    a = new T[n];
-    top = -1;
+        n = size;
+        a = new T[n];
+        top = -1;
     }
+
     void push(T element) {
-        if(top == n - 1) {
-        cout << "Stack is full\n";
-        }
-    else {
-        ++top;
-        a[top] = element;
+        if(top == n - 1) 
+        {
+            cout << "Stack full.\n";
+        } else 
+        {
+            ++top;
+            a[top] = element;
         }
     }
 
     T pop() {
-        //TODO
+        if (top == -1) 
+        {
+            cout << "Stack is empty. No elements to pop\n";
+            return -1;
+        }
+        else
+        {
+            T poppedElement = a[top];
+            --top;
+            return poppedElement;
+        }
     }
+
     void display() {
-        //TODO
+        if (top == -1) 
+        {
+            cout << "Stack is empty\n";
+        } else {
+            cout << "Elements in the stack: ";
+            for (int i = top; i >= 0; --i) {
+                cout << a[i] << " ";
+            }
+            cout << endl;
+        }
     }
 
     void operations() {
@@ -47,8 +68,7 @@ public:
                 case 2: {
                     T val = pop();
                     if(val != -1) {
-
-                    cout << "Popped element: " << val << endl;
+                        cout << "Popped element: " << val << endl;
                     }
                     break;
                 }
@@ -66,6 +86,7 @@ public:
         }
     }
 };
+
 int main() {
     int size;
     cout << "Enter the size of the stack: ";
