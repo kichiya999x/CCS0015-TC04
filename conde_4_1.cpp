@@ -1,84 +1,50 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 
-class DynCharStack {
-private:
-    struct StackNode {
-        char value;
-        StackNode *next;
-    };
-    StackNode *top;
+int countMinReplacements(string str)
+{
+    stack<char> st;
+    int replacements = 0;
 
-public:
-    DynCharStack();
-    void push(char brace);
-    char pop();
-    bool isEmpty();
-};
+     for (int i = 0; i < str.size(); i++) 
+     {
 
-DynCharStack::DynCharStack() {
-    top = NULL;
-}
-
-void DynCharStack::push(char brace) {
-    StackNode *newNode = new StackNode;
-    newNode->value = brace;
-    newNode->next = top;
-    top = newNode;
-}
-
-char DynCharStack::pop() {
-    if (isEmpty()) {
-        cout << "The stack is empty.\n";
-        return '\0'; // Return null character if stack is empty
-    } else {
-        StackNode *temp = top;
-        char brace = top->value;
-        top = top->next;
-        delete temp;
-        return brace;
-    }
-}
-
-bool DynCharStack::isEmpty() {
-    return (top == NULL);
-}
-
-int findMinimumReplacements(const string& braces) {
-    DynCharStack stack;
-
-    for (char ch : braces) {
-        if (ch == '{') {
-            stack.push(ch);
-        } else if (ch == '}') {
-            if (!stack.isEmpty() && stack.pop() == '{') {
-                // Match found, pop opening brace
-            } else {
-                stack.push(ch); // Push closing brace if no match found
+        if (str[i] == '{')
+        {
+            st.push(str[i]);
+        }
+        else 
+        {
+            if (str[i] == '}' && !st.empty() && st.top() == '{')
+            {
+                st.pop();
+            }
+            else 
+            {
+                replacements++;
             }
         }
-    }
-
-    // To balance the string, half of the unmatched braces need to be replaced.
-    return (stack.isEmpty() ? 0 : (stack.isEmpty() + 1) / 2);
+     }
+    replacements += st.size();
+    return replacements;
 }
 
-int main() {
-    while (true) {
-        string braces;
+int main()
+{
+    string braces;
+    char choice;
+
+    do {
         cout << "Enter a string of braces: ";
         cin >> braces;
 
-        int replacements = findMinimumReplacements(braces);
+        int replacements = countMinReplacements(braces);
         cout << "Minimum number of replacements required: " << replacements << endl;
 
-        char choice;
         cout << "Do you want to enter another string? (y/n): ";
         cin >> choice;
-        if (choice != 'y' && choice != 'Y') {
-            break;
-        }
-    }
+    } while (choice == 'y' || choice == 'Y');
 
     return 0;
 }
