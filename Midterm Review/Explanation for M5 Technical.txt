@@ -1,0 +1,6 @@
+Explanation for M5 Technical:
+for Empty:
+The isEmpty() function checks if the queue is empty, and if it is, the dequeue() function will print the error message. In this code, we first check if the queue is not empty by calling isEmpty(). If the queue is not empty, we print the front element. If the queue is empty, we don't print anything. This way, the -1 return value of getFront() when the queue is empty won't be printed.
+
+for Full:
+To display "Error: Queue is full!" when trying to enqueue an element into a full queue, you need to call the enqueue method after the queue has reached its maximum size. In this code, we first fill the queue to its maximum size by enqueuing MAX_SIZE elements. Then, we try to enqueue another element. Since the queue is already full, the enqueue method will print "Error: Queue is full!".
