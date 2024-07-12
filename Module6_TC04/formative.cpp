@@ -1,29 +1,28 @@
 //Determines if a number is PRIME or NOT
 #include <iostream>
 using namespace std;
-int prime (int n, int i=2); // Start i at 2, since 1 is not useful for checking prime
+int prime(int n, int i = 1);
 int main()
 {
     int num;
-    cout <<"Enter a positive number: ";
-    cin >> num; // Fill with variable to store input
+    cout << "Enter a positive number: ";
+    cin >> num;
 
-    if (prime(num)==1) // If function returns 1, it's prime
-        cout << "PRIME" << endl;
+    if (prime(num) == 2)
+        cout << "PRIME" << endl; //Answer must either PRIME/ NOT PRIME.
 
     else
-        cout << "NOT PRIME" << endl;
-    
-    system ("pause");
+        cout << "NOT PRIME" << endl; //Answer must be either PRIME / NOT PRIME.
+
+    system("pause");
 }
 
-
-int prime(int n, int i=2)
+int prime(int n, int i)
 {
     if (i == n)
-        return(1);
+        return 1; // n is prime if we reached n
     else if (n % i == 0)
-    return(0);
+        return 0; // not prime
     else
-    return prime(n, i + 1);
+        return prime(n, i + 1); // check next divisor
 }
